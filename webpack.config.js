@@ -23,12 +23,14 @@ module.exports = {
       {
         test: /\.(html|svelte)$/,
         include: [path.resolve('src')],
-        use: {
-          loader: 'svelte-loader',
-          options: {
-            emitCss: true
+        use: [
+          {
+            loader: 'svelte-loader',
+            options: {
+              emitCss: true
+            }
           }
-        }
+        ]
       },
       {
         test: /\.css$/,
