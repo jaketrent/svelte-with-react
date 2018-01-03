@@ -1,8 +1,5 @@
-import HelloWorld from './hello-world.html'
+import React from 'react'
+import { render } from 'react-dom'
 
-var app = new HelloWorld({
-  target: document.getElementById('app'),
-  data: {
-    name: 'Jake'
-  }
-})
+import App from './react-app'
+render(<App />, document.getElementById('app'))

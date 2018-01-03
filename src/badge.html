@@ -1,0 +1,34 @@
+<div class="badge badge--color-{{color}}">
+  {{children}}
+</div>
+
+<style>
+.badge {
+  display: inline-block;
+  padding: 0 4px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 24px;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+.badge--color-red {
+  color: #fff;
+  background-color: #de3636;
+}
+.badge--color-orange {
+  color: #fff;
+  background-color: #f96816;
+}
+</style>
+
+<script>
+  export default {
+    data() {
+      return {
+        color: 'red'
+      }
+    }
+  }
+</script>
+

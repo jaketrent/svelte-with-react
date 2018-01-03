@@ -32,7 +32,9 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        include: [path.resolve('src')],
+        // NOTE: Have to have /private svelte compilation directories available for css loading abs paths?!
+        // include: [path.resolve('src')],
+        exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [{ loader: 'css-loader', options: { sourceMap: true } }]
