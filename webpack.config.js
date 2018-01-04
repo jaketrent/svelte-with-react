@@ -29,27 +29,20 @@ module.exports = {
       {
         test: /\.(html|svelte)$/,
         include: [src],
-        // exclude: /node_modules/,
         use: [
           {
             loader: 'svelte-loader',
             options: {
               // emitCss: true,
               style: ({ content, attributes, filename }) => {
-                // return
                 return postcss([
-                  postcssImport(),
+                  postcssImport,
                   postcssCssnext({
                     browsers: ['Last 2 versions', 'IE >= 10']
                   })
                 ])
-                  .process(
-                    content,
-                    { from: filename, to: filename }
-                    // { from: path.dirname(filename) }
-                  )
+                  .process(content, { from: filename })
                   .then(result => {
-                    console.log('result', result)
                     return { code: result.css, map: null }
                   })
                   .catch(err => {
