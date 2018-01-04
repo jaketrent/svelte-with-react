@@ -1,3 +1,4 @@
+const babel = require('babel-core')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const htmlWebpackTemplate = require('html-webpack-template')
@@ -49,6 +50,25 @@ module.exports = {
                     console.log('failed to preprocess style', err)
                     return
                   })
+              },
+              script: ({ content, attributes }) => {
+                const result = babel.transform(content, {
+                  // for some reason, babelrc ignored, maybe another tmp file pathing problem
+                  babelrc: false,
+                  presets: [
+                    'react',
+                    'stage-2',
+                    [
+                      'env',
+                      {
+                        targets: {
+                          browsers: ['last 2 versions', 'ie >= 11']
+                        }
+                      }
+                    ]
+                  ]
+                })
+                return { code: result.code, map: result.map }
               }
             }
           }
