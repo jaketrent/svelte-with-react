@@ -1,42 +1,35 @@
-<div class={{css.badge}}>
+<div class="badge badge--color-{{color}}">
   {{children}}
 </div>
 
-<script>
-  import core from '@pluralsight/ps-design-system-core'
-  import * as glamor from 'glamor'
+<style>
+@import "@pluralsight/ps-design-system-core";
+.badge {
+  display: inline-block;
+  padding: 0 4px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 24px;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+.badge--color-red {
+  color: #fff;
+  background-color: var(--psColorsRed);
+}
+.badge--color-orange {
+  color: #fff;
+  background-color: var(--psColorsOrange);
+}
+</style>
 
+<script>
   export default {
     data() {
       return {
         color: 'red'
       }
     },
-    computed: {
-      css: color => ({
-        badge: glamor.css(
-          Object.assign({
-            display: 'inline-block',
-            padding: `0 ${core.layout.spacingXSmall}`,
-            fontWeight: core.type.fontWeightMedium,
-            fontSize: core.type.fontSizeXSmall,
-            lineHeight: core.type.lineHeightStandard,
-            borderRadius: '2px',
-            textTransform: 'uppercase',
-          },
-          {
-            orange: {
-              color: core.colors.white,
-              background: core.colors.orange
-            },
-            red: {
-              color: core.colors.white,
-              background: core.colors.red
-            }
-          }[color])
-        )
-      })
-    }
   }
 </script>
 
